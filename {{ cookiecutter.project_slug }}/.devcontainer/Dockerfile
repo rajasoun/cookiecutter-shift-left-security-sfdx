@@ -13,6 +13,14 @@ FROM builder
 COPY dotfiles /root/dotfiles
 COPY --from=chamber-builder /chamber /usr/bin/chamber
 
+# Install Node.js
+ARG INSTALL_NODE="true"
+ARG NODE_VERSION="lts/*"
+RUN set -x \
+    && if [ "${INSTALL_NODE}" = "true" ]; then \
+        su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; \
+    fi
+
 # pip3 packages
 RUN set -ex \
     && pip3 --disable-pip-version-check --no-cache-dir install \
@@ -21,7 +29,8 @@ RUN set -ex \
             pre-commit==2.12.1      \
             commitizen==2.17.3      \
             cruft==2.8.0            \
-            cumulusci==3.33.1
+            cumulusci==3.33.1       \
+    && rm -rf /tmp/pip-tmp
 
 # OS packages.
 RUN set -ex \
