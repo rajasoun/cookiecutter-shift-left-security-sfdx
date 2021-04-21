@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# shellcheck source=/dev/null
+. "$(dirname "$0")/_/husky.sh"
+
+printf "\n2. Prepare Commit Message: (pre-commit-msg)"
+## git hooks are not interactive.
+## command: `exec < /dev/tty` allows the user to use their terminal
+## to interact with Commitizen during the hook
+current_working_dir=$(pwd -P)
+export current_working_dir
+cd shift-left-security || exit
+exec < /dev/tty && npx cz --hook || true
+

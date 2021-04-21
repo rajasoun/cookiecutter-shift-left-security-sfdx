@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# shellcheck source=/dev/null
+. "$(dirname "$0")/_/husky.sh"
+
+printf "\n3. Lint Commit Message: (commitlint-msg)"
+npx commitlint --config shift-left-security/.commitlintrc.yml --edit "$HUSKY_GIT_PARAMS"
+#npx commitlint --edit $1
+
+cd "$current_working_dir" || return
+printf "\n Done"

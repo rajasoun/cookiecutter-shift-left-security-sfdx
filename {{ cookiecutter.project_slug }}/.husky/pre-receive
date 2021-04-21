@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+# shellcheck source=/dev/null
+. "$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/common.sh"
+
+printf "\nPre Receive Steps: (pre-receive) : Git Guardian secrets detection"
+
+# load .env
+export "$(cat .env | xargs)"
+
+# Commit sha with all zeros
+zero_commit="0000000000000000000000000000000000000000"
+
+while read -r oldrev newrev refname; do
+    echo "(pre-receive) Old revision: $oldrev"
+    echo "(pre-receive) New revision: $newrev"
+    echo "(pre-receive) Reference name: $refname"
+    # Check if a zero sha
+    if [ "${oldrev}" = "${zero_commit}" ]; then
+        # List everything reachable from newrev but not any heads
+        span="$(git for-each-ref --format='%(refname)' 'refs/heads/*' | sed 's/^/\^/') ${newrev}"
+    else
+        span="${oldrev}...${newrev}"
+    fi
+
+    if command_exists ggshield && test -t 1; then
+        ggshield scan commit-range "${span}" && continue
+    elif command_exists docker && test -t 1; then
+        docker run --rm -v "$(pwd)":/data ggshield -e GITGUARDIAN_API_KEY \
+            gitguardian/ggshield:latest ggshield scan commit-range "${span}" && continue
+    fi
+
+    echo "ERROR: Your push was rejected because it contained a policy break"
+    echo "ERROR: Please contact your Git administrator if this was a false positive."
+    exit 1
+done

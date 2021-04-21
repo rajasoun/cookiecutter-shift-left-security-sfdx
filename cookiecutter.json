@@ -1,0 +1,7 @@
+{
+  "project_name": "",
+  "project_slug": "{{ cookiecutter.project_name.lower() }}",
+  "project_description": "",
+  "security_mailer": "",
+  "author_full_name": ""
+}

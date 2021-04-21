@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+# shellcheck source=/dev/null
+. "$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/common.sh"
+
+printf "\n1. Pre Commit Steps: (pre-commit)"
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR "*.js" "*.*" | sed 's| |\\ |g')
+[ -z "$FILES" ] && exit 0
+
+# Prettify all selected files
+echo "$FILES" | xargs npx lint-staged --config shift-left-security/.lintstagedrc.yml
+
+# check if pre-commit exists locally
+if command_exists pre-commit && test -t 1; then
+    pre-commit run --all-files
+elif command_exists docker && test -t 1; then
+    docker run --rm -v "$(pwd)":/data fxinnovation/pre-commit run --all-files
+fi
+
+# Add back the modified/prettified files to staging
+echo "$FILES" | xargs git add
+
+exit 0

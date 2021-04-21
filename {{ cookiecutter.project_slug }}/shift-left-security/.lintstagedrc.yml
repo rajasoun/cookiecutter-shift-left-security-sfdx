@@ -1,0 +1,13 @@
+---
+'**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,yaml,yml,xml}':
+    - npx prettier --config shift-left-security/.prettierrc.yml --write .
+
+'**/*.js,{aura|lwc}/**':
+    - npx eslint --config shift-left-security/.eslintrc.yml --no-eslintrc --cache --fix
+
+# '**/*.sh':
+#     - shellcheck
+
+# '**/*.py':
+#     - black --verbose
+#     - pylint
