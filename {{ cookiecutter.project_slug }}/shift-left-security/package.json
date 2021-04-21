@@ -2,7 +2,7 @@
     "name": "{{ cookiecutter.project_slug }}",
     "version": "0.0.1",
     "description": "{{ cookiecutter.project_description }}",
-    "author":  "{{ cookiecutter.author_full_name }}",
+    "author": "{{ cookiecutter.author_full_name }}",
     "license": "ISC",
     "private": true,
     "scripts": {
@@ -39,4 +39,3 @@
         }
     }
 }
-

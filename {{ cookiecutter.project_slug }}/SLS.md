@@ -12,7 +12,6 @@ Institutionalizing Shift Left Security adoption for
 1.  CLI that simplifies build automation for Salesforce org
 1.  Automate salesforce org setup, testing, and deployment
 
-
 ## Prerequisites
 
 1.  [Visual Studio Code](https://code.visualstudio.com/)
@@ -41,7 +40,6 @@ cp .env.sample .env
 ```
 
 1. `npm install --prefix ./shift-left-security` to install the toolset
-
 
 ## Prerequisites - Remote development in Containers
 

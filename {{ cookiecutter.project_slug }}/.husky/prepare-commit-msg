@@ -11,4 +11,3 @@ current_working_dir=$(pwd -P)
 export current_working_dir
 cd shift-left-security || exit
 exec < /dev/tty && npx cz --hook || true
-

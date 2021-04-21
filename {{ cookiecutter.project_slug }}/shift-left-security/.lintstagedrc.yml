@@ -4,7 +4,6 @@
 
 '**/*.js,{aura|lwc}/**':
     - npx eslint --config shift-left-security/.eslintrc.yml --no-eslintrc --cache --fix
-
 # '**/*.sh':
 #     - shellcheck
 
