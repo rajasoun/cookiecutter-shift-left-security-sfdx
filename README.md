@@ -19,7 +19,7 @@ For institutionalizing Shift Left Security adoption for
 ```sh
 docker run --rm --name cruft python:3.9.3-alpine3.13  \
   pip3  install cruft \
-  && cruft create https://github.com/rajasoun/cookiecutter-shift-left-security
+  && cruft create https://github.com/rajasoun/cookiecutter-shift-left-security-sfdx
 ```
 
 Once finished, navigate to your new project folder :
