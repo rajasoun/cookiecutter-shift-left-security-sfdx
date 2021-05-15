@@ -533,3 +533,6 @@ certs/*.crt
 certs/*.key
 certs/*.csr
 certs/*.pass*
+
+# exlude bin directory in shift-left-security
+!shift-left-security/bin
