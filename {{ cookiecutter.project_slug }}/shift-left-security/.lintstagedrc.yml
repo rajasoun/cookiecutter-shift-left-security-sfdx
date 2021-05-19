@@ -4,9 +4,10 @@
 
 '**/*.js,{aura|lwc}/**':
     - npx eslint --config shift-left-security/.eslintrc.yml --no-eslintrc --cache --fix
-# '**/*.sh':
-#     - shellcheck
 
-# '**/*.py':
-#     - black --verbose
-#     - pylint
+'**/*.py':
+    - black --verbose
+    - pylint
+
+'**/*.sh':
+    - shellcheck

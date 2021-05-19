@@ -33,14 +33,6 @@ $ ghelp
 $ gsetup
 ```
 
-1.  Populate .env file with GITHUB_TOKEN, GITGUARDIAN_API_KEY and GITGUARDIAN_API_URL
-
-```
-cp .env.sample .env
-```
-
-1. `npm install --prefix ./shift-left-security` to install the toolset
-
 ## Prerequisites - Remote development in Containers
 
 Running Visual Studio Code in a Docker container using the Remote - Containers extension.
@@ -84,3 +76,7 @@ Each project has a .devcontainer folder.
 The .devcontainer folder contains the Dockerfile and devcontainer.json configuration for the development environment.
 
 ![Remote Container](https://code.visualstudio.com/assets/docs/remote/containers/architecture-containers.png)
+
+## Credits
+
+-   [Cookiecutter Shift Left Security for SFDX](https://github.com/rajasoun/cookiecutter-shift-left-security-sfdx)

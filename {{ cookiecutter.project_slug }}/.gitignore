@@ -414,7 +414,6 @@ Thumbs.db
 .settings/
 .metadata
 build.properties
-config
 
 # Apex Log as optional
 apex-scripts/log
@@ -423,7 +422,6 @@ apex-scripts/log
 salesforce.schema
 Referenced Packages
 bin/
-config/
 *.tmp
 *.bak
 local.properties
@@ -527,12 +525,14 @@ $RECYCLE.BIN/
 .env
 .cache_ggshield
 .vscode
+.cci
 
 # exclude certs,keys
-certs/*.crt
-certs/*.key
-certs/*.csr
-certs/*.pass*
+automator/certs/*.crt
+automator/certs/*.key
+automator/certs/*.csr
+automator/certs/*.pass*
 
 # exlude bin directory in shift-left-security
 !shift-left-security/bin
+automator/config/*.env.*

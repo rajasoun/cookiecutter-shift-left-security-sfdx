@@ -4,15 +4,6 @@
 ARG VARIANT="3"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT} AS builder
 
-# secerts management using chamber
-FROM segment/chamber:2.9.1 as chamber-builder
-
-FROM builder
-# COPY files
-
-COPY dotfiles /root/dotfiles
-COPY --from=chamber-builder /chamber /usr/bin/chamber
-
 # Install Node.js
 ARG INSTALL_NODE="true"
 ARG NODE_VERSION="lts/*"
@@ -29,13 +20,13 @@ RUN set -ex \
             pre-commit==2.12.1      \
             commitizen==2.17.3      \
             cruft==2.8.0            \
-            cumulusci==3.33.1       \
+            cumulusci==3.35.0       \
     && rm -rf /tmp/pip-tmp
 
 # OS packages.
 RUN set -ex \
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends git-flow bash-completion
+    && apt-get -y install --no-install-recommends git-flow bash-completion shellcheck jq
 
 # Install global node packages.
 ARG SALESFORCE_CLI_VERSION=latest

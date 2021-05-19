@@ -13,8 +13,10 @@ rules:
 
 plugins:
     - prettier
+    - '@salesforce/eslint-plugin-aura'
 
 extends:
-    - airbnb-base
     - plugin:prettier/recommended
     - prettier
+    - plugin:@salesforce/eslint-plugin-aura/recommended
+    - plugin:@salesforce/eslint-plugin-aura/locker
