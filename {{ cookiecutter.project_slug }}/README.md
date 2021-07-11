@@ -31,9 +31,7 @@ System of Records for all the LCCE Applications built on salesforce platform
 1. Clone repository
 
     ```
-    git clone git@www-github.cisco.com:LC-SecurityDPP/application-profiler.git
-    cd application-profiler
-    git checkout feature/develop_simplify_refactor # till the code gets merged to main and develop
+    git clone <repository_url> && cd <repository_name>
     code .
     ```
 
